@@ -40,21 +40,39 @@ pub struct Error {
 impl Error {
     /// Returns a new error of the specific `ErrorKind` with an arbitrary payload.
     pub fn new<E>(kind: ErrorKind, error: E) -> Error
-    where E: Into<Box<dyn error::Error + Send + Sync>> {
-        Error { kind, error: error.into(), source: None}
+    where
+        E: Into<Box<dyn error::Error + Send + Sync>>,
+    {
+        Error {
+            kind,
+            error: error.into(),
+            source: None,
+        }
     }
 
     /// Returns a new error of the specific `ErrorKind` with an arbitrary payload and source error.
     pub fn new_caused_by<E, F>(kind: ErrorKind, error: E, source: F) -> Error
-    where E: Into<Box<dyn error::Error + Send + Sync>>,
-          F: Into<Box<dyn error::Error + Send + Sync>> {
-        Error { kind, error: error.into(), source: Some(source.into())}
+    where
+        E: Into<Box<dyn error::Error + Send + Sync>>,
+        F: Into<Box<dyn error::Error + Send + Sync>>,
+    {
+        Error {
+            kind,
+            error: error.into(),
+            source: Some(source.into()),
+        }
     }
 
     /// Convenience function that returns a `ParseError` with an arbitrary payload. Equivalent to calling `Error::new(ErrorKind::ParseError, error)`
     pub fn new_parse_error<E>(error: E) -> Error
-        where E: Into<Box<dyn error::Error + Send + Sync>> {
-            Error { kind: ErrorKind::ParseError, error: error.into(), source: None}
+    where
+        E: Into<Box<dyn error::Error + Send + Sync>>,
+    {
+        Error {
+            kind: ErrorKind::ParseError,
+            error: error.into(),
+            source: None,
+        }
     }
 }
 
