@@ -4,13 +4,11 @@
 name = "board-game-traits"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5cb754816c075082acb2dc2dcd311ade978c5ef9df46c623126046125d52be51"
 
 [[package]]
 name = "pgn-traits"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
- "board-game-traits 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "board-game-traits",
 ]
-
-[metadata]
-"checksum board-game-traits 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "5cb754816c075082acb2dc2dcd311ade978c5ef9df46c623126046125d52be51"

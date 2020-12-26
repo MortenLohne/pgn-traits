@@ -50,6 +50,12 @@ impl Error {
           F: Into<Box<dyn error::Error + Send + Sync>> {
         Error { kind, error: error.into(), source: Some(source.into())}
     }
+
+    /// Convenience function that returns a `ParseError` with an arbitrary payload. Equivalent to calling `Error::new(ErrorKind::ParseError, error)`
+    pub fn new_parse_error<E>(error: E) -> Error
+        where E: Into<Box<dyn error::Error + Send + Sync>> {
+            Error { kind: ErrorKind::ParseError, error: error.into(), source: None}
+    }
 }
 
 impl error::Error for Error {}
