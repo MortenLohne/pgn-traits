@@ -2,9 +2,9 @@
 # It is not intended for manual editing.
 [[package]]
 name = "board-game-traits"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5cb754816c075082acb2dc2dcd311ade978c5ef9df46c623126046125d52be51"
+checksum = "57ca22f9999ab8c9b5159210f7144b199229ae2e76eef23d683e2f856844dccf"
 
 [[package]]
 name = "pgn-traits"

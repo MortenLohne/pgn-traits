@@ -6,7 +6,7 @@
 
 extern crate board_game_traits;
 
-use board_game_traits::board;
+use board_game_traits::Position;
 use std::error;
 use std::fmt;
 
@@ -99,7 +99,7 @@ impl fmt::Display for Error {
 /// Trait for text representations of board positions and moves.
 ///
 /// The terminology used in this trait is specific to chess and chess variants, but it can be implemented for any game.
-pub trait PgnBoard: Sized + board::Board + PartialEq {
+pub trait PgnBoard: Sized + Position + PartialEq {
     /// Constructs a board from [Forsyth–Edwards Notation][1].
     ///
     /// Extensions to this notation exist for all large chess variants
