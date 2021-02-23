@@ -6,7 +6,7 @@
 
 extern crate board_game_traits;
 
-use board_game_traits::Position;
+use board_game_traits::{GameResult, Position};
 use std::error;
 use std::fmt;
 
@@ -100,6 +100,17 @@ impl fmt::Display for Error {
 ///
 /// The terminology used in this trait is specific to chess and chess variants, but it can be implemented for any game.
 pub trait PgnPosition: Sized + Position + PartialEq {
+    /// The required tags, and their default values, for pgn files
+    const REQUIRED_TAGS: &'static [(&'static str, &'static str)];
+
+    /// Each possible game result in the pgn
+    const POSSIBLE_GAME_RESULTS: &'static [(&'static str, Option<GameResult>)] = &[
+        ("*", None),
+        ("1-0", Some(GameResult::WhiteWin)),
+        ("0-1", Some(GameResult::BlackWin)),
+        ("1/2-1/2", Some(GameResult::Draw)),
+    ];
+
     /// Constructs a position from [Forsyth–Edwards Notation][1].
     ///
     /// Extensions to this notation exist for all large chess variants
