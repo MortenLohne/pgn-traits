@@ -1,4 +1,4 @@
-//! Data types for text representations of board positions and moves, which may be used for [Portable game notation][1].
+//! Data types for text representations of game positions and moves, which may be used for [Portable game notation][1].
 //!
 //! The terminology used in this module is specific to chess and chess variants, but it can be implemented for any game.
 //!
@@ -27,7 +27,7 @@ pub enum ErrorKind {
     Other,
 }
 
-/// The error type for operations on a `PgnBoard`.
+/// The error type for operations on a `PgnPosition`.
 ///
 /// The error can be created with an arbitrary payload and optionally an underlying source error for error chaining.
 #[derive(Debug)]
@@ -96,18 +96,18 @@ impl fmt::Display for Error {
     }
 }
 
-/// Trait for text representations of board positions and moves.
+/// Trait for text representations of game positions and moves.
 ///
 /// The terminology used in this trait is specific to chess and chess variants, but it can be implemented for any game.
-pub trait PgnBoard: Sized + Position + PartialEq {
-    /// Constructs a board from [Forsyth–Edwards Notation][1].
+pub trait PgnPosition: Sized + Position + PartialEq {
+    /// Constructs a position from [Forsyth–Edwards Notation][1].
     ///
     /// Extensions to this notation exist for all large chess variants
     ///
     /// [1]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
     fn from_fen(fen: &str) -> Result<Self, Error>;
 
-    /// Returns a string representation of the board in [Forsyth–Edwards Notation][1].
+    /// Returns a string representation of the position in [Forsyth–Edwards Notation][1].
     ///
     /// Extensions to this notation exist for all large chess variants.
     ///
