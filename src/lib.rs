@@ -111,6 +111,11 @@ pub trait PgnPosition: Sized + Position + PartialEq {
         ("1/2-1/2", Some(GameResult::Draw)),
     ];
 
+    /// Each possible move annotation that can appear at the end of a move
+    /// A move can have multiple annotations.
+    /// If one annotation is a substring of another, the longer one must be written first
+    const POSSIBLE_MOVE_ANNOTATIONS: &'static [&'static str] = &["!!", "!?", "?!", "??", "!", "?"];
+
     /// Constructs a position from [Forsyth–Edwards Notation][1].
     ///
     /// Extensions to this notation exist for all large chess variants
