@@ -111,6 +111,16 @@ pub trait PgnPosition: Sized + Position + PartialEq {
         ("1/2-1/2", Some(GameResult::Draw)),
     ];
 
+    /// Returns a more detailed game result string, for games that use these.
+    /// Must correspond with `POSSIBLE_GAME_RESULTS`
+    fn pgn_game_result(&self) -> Option<&'static str> {
+        self.game_result().map(|game_result| match game_result {
+            GameResult::WhiteWin => "1-0",
+            GameResult::BlackWin => "0-1",
+            GameResult::Draw => "1/2-1/2",
+        })
+    }
+
     /// Each possible move annotation that can appear at the end of a move
     /// A move can have multiple annotations.
     /// If one annotation is a substring of another, the longer one must be written first
