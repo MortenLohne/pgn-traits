@@ -121,7 +121,16 @@ pub trait PgnPosition: Sized + Position + PartialEq {
     /// Extensions to this notation exist for all large chess variants
     ///
     /// [1]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
-    fn from_fen(fen: &str) -> Result<Self, Error>;
+    fn from_fen(fen: &str) -> Result<Self, Error> {
+        Self::from_fen_with_settings(fen, &Self::Settings::default())
+    }
+
+    /// Constructs a position from [Forsyth–Edwards Notation][1] with the given settings.
+    ///
+    /// Extensions to this notation exist for all large chess variants
+    ///
+    /// [1]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+    fn from_fen_with_settings(fen: &str, settings: &Self::Settings) -> Result<Self, Error>;
 
     /// Returns a string representation of the position in [Forsyth–Edwards Notation][1].
     ///

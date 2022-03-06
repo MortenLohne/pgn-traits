@@ -9,4 +9,4 @@ readme = "README.md"
 license = "MIT"
 
 [dependencies]
-board-game-traits = "0.2.0"
+board-game-traits = { git = "https://github.com/MortenLohne/board-game-traits", branch = "f-settings-type" }
