@@ -113,6 +113,7 @@ pub trait PgnPosition: Sized + Position + PartialEq {
 
     /// Returns a more detailed game result string, for games that use these.
     /// Must correspond with `POSSIBLE_GAME_RESULTS`
+    #[inline]
     fn pgn_game_result(&self) -> Option<&'static str> {
         self.game_result().map(|game_result| match game_result {
             GameResult::WhiteWin => "1-0",
@@ -131,6 +132,7 @@ pub trait PgnPosition: Sized + Position + PartialEq {
     /// Extensions to this notation exist for all large chess variants
     ///
     /// [1]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+    #[inline]
     fn from_fen(fen: &str) -> Result<Self, Error> {
         Self::from_fen_with_settings(fen, &Self::Settings::default())
     }
