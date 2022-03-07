@@ -10,7 +10,7 @@ checksum = "3f0c0fc76324ee558f1c6239a069c3101d74286eedd7d9b1e307d47b4f039c23"
 
 [[package]]
 name = "pgn-traits"
-version = "0.2.2"
+version = "0.3.0"
 dependencies = [
  "board-game-traits",
 ]

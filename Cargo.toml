@@ -1,6 +1,6 @@
 [package]
 name = "pgn-traits"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["Morten Lohne <lohnemorten@gmail.com>"]
 edition = "2018"
 description = "Traits for chess variations that can be annotated with Portable Game Notation"
