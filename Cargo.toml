@@ -5,6 +5,7 @@ authors = ["Morten Lohne <lohnemorten@gmail.com>"]
 edition = "2018"
 description = "Traits for chess variations that can be annotated with Portable Game Notation"
 repository = "https://github.com/MortenLohne/pgn-traits"
+documentation = "https://docs.rs/pgn-traits"
 readme = "README.md"
 license = "MIT"
 
