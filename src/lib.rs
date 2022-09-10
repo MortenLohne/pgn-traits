@@ -103,6 +103,12 @@ pub trait PgnPosition: Sized + Position + PartialEq {
     /// The required tags, and their default values, for pgn files
     const REQUIRED_TAGS: &'static [(&'static str, &'static str)];
 
+    /// The name of a special tag that allows non-standard start positions for a game
+    /// For such games, parsers need to handle this tag to work correctly
+    /// In standard chess PGN, this would be `Some("FEN")`
+    /// Can be `None` to disable its usage
+    const START_POSITION_TAG_NAME: Option<&'static str>;
+
     /// Each possible game result in the pgn
     const POSSIBLE_GAME_RESULTS: &'static [(&'static str, Option<GameResult>)] = &[
         ("*", None),
