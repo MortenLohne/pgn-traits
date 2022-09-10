@@ -143,6 +143,11 @@ pub trait PgnPosition: Sized + Position + PartialEq {
         Self::from_fen_with_settings(fen, &Self::Settings::default())
     }
 
+    /// The number of full moves in the position
+    /// It starts at 1 and is incremented after the second player's move
+    #[inline]
+    fn full_move_number(&self) -> Option<u32> { None }
+
     /// Constructs a position from [Forsyth–Edwards Notation][1] with the given settings.
     ///
     /// Extensions to this notation exist for all large chess variants
